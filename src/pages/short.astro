@@ -9,10 +9,10 @@ const link = Astro.url.searchParams.get('link')
 
 <Layout title="Shortener">
   <div class="pt-10 pb-6">
-    <h1 class="text-4xl font-bold text-center">
+    <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-white">
       Link shortener 👌
     </h1>
-    <p class="text-center text-gray-500">
+    <p class="text-center text-lg font-semibold text-gray-500 dark:text-gray-400">
       Shorten your links
   </p>
   </div>
@@ -20,10 +20,10 @@ const link = Astro.url.searchParams.get('link')
   <section class="flex flex-col items-center gap-2 px-10 mx-auto py-5 w-full max-w-4xl">
     {
       new_link && link ? (
-        <span class="text-lg font-semibold">Here is your link ✨</span>
+        <span class="text-lg font-semibold text-gray-700 dark:text-gray-400">Here is your link ✨</span>
         <LinkCard client:only new_link={new_link} />
       ) : (
-        <div class="max-w-sm p-6 min-w-max bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-lg font-medium">
+        <div class="max-w-sm p-6 min-w-max text-gray-900 dark:text-white bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-lg font-medium">
           Your link appears here 🔗
         </div>
       )

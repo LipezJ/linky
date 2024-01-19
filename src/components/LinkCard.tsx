@@ -36,7 +36,7 @@ export default function LinkCard({ new_link }: { new_link: string }) {
         <button
           ref={triggerElement}
           type="button"
-          class="p-2 border-[2px] border-gray-200 hover:border-gray-400 text-gray-200 hover:text-gray-400 rounded"
+          class="p-2 border-[2px] border-gray-400 dark:border-gray-200 dark:hover:border-gray-400 hover:border-gray-500 text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 hover:text-gray-600 rounded"
           onClick={copyToClipboard}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4">
