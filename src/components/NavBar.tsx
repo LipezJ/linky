@@ -14,7 +14,7 @@ export function NavBar() {
 
   const toggle = () => {
 
-    const collapse = new Collapse(targetElement.current, triggerElement.current, instanceOptions);
+    const collapse = new Collapse(targetElement.current, triggerElement.current, {}, instanceOptions);
     collapse.toggle();
   }
 
