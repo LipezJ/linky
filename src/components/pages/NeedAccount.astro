@@ -1,0 +1,17 @@
+---
+import Benefits from '../Benefits.astro'
+---
+
+<section class="flex flex-col md:flex-row gap-5 justify-center items-center w-full !h-full p-6 pt-20 md:p-18 lg:p-20">
+  <article class="grid justify-center gap-6 md:w-3/5">
+    <h2 class="text-4xl md:text-7xl text-balance font-medium [&>strong]:font-extrabold text-gray-900 dark:text-white">
+      You need to be <strong>registered</strong>!
+    </h2>
+    <p class="text-xl font-medium text-gray-500 lg:text-xl dark:text-gray-400">
+      Register with Github to enjoy some extra benefits of the page. ✨
+    </p>
+  </article>
+  <article class="md:w-2/5">
+    <Benefits />
+  </article>
+</section>
