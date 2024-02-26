@@ -29,9 +29,9 @@ export default function LinkCard({ new_link }: { new_link: string }) {
     <div class="p-6 max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div class="flex mb-2 gap-2 items-center w-fit max-w-full break-all">
         <a href={`${new_link}`}>
-          <h5 class="text-2xl font-bold tracking-tight text-blue-600 underline">
+          <span class="text-2xl font-bold tracking-tight text-blue-600 underline">
             {new_link}
-          </h5>
+          </span>
         </a>
         <button
           ref={triggerElement}
