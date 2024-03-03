@@ -20,7 +20,7 @@ const link = Astro.url.searchParams.get('link')
   <section class="flex flex-col items-center gap-2 px-10 mx-auto py-5 w-full max-w-4xl">
     {
       new_link && link ? (
-        <span class="text-lg font-semibold text-gray-700 dark:text-gray-400">Here is your link ✨</span>
+        <span class="text-lg font-semibold text-black dark:text-white">Here is your link ✨</span>
         <LinkCard client:only new_link={new_link} />
       ) : (
         <div class="max-w-sm p-6 min-w-max text-gray-900 dark:text-white bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-lg font-medium">
