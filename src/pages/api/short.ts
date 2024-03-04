@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   }
   
   const new_link_code = await createLink(link);
-  const new_link = import.meta.env.PUBLIC_URL + new_link_code;
+  const new_link = `${import.meta.env.PUBLIC_URL}/lk/${new_link_code}`;
 
   return redirect("/short?" + new URLSearchParams({
     new_link: new_link,

@@ -3,8 +3,6 @@ import type { APIRoute } from "astro";
 import { getLink } from "../../db/links";
 
 export const GET: APIRoute = async ({ params, redirect }) => {
-  console.time("getLink");
-
   const code = params.code;
 
   if (!code)

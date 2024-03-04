@@ -4,6 +4,9 @@ import LinkForm from '../components/LinkForm.astro';
 import HeadLine from '../components/HeadLine.astro';
 import Benefits from '../components/Benefits.astro';
 import AboutBanner from '../components/AboutBanner.astro';
+import { Auth } from '../lib/auth';
+
+const auth = Auth.isSignedIn(Astro.cookies);
 ---
 
 <Layout title="Welcome to linky.">
@@ -18,9 +21,13 @@ import AboutBanner from '../components/AboutBanner.astro';
 			<LinkForm />
 		</div>
 	</section>
-	<section class="px-10">
-		<Benefits />
-	</section>
+	{
+		!auth && (
+			<section class="flex justify-center p-6">
+				<Benefits />
+			</section>
+		)
+	}
 	<section class="flex justify-center p-6">
 		<AboutBanner />
 	</section>

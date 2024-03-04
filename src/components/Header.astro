@@ -1,6 +1,5 @@
 ---
-import { NavBar } from "./NavBar";
-import DarkToggle from "./DarkToggle";
+import NavBar from "./NavBar.astro";
 ---
 
 <header class="shadow-md">
@@ -14,7 +13,7 @@ import DarkToggle from "./DarkToggle";
           Linky
         </span>
       </a>
-      <NavBar client:load />
+      <NavBar />
     </div>
   </nav>
 </header>
