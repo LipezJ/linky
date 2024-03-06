@@ -1,7 +1,7 @@
 ---
 import UserMenu from "./UserMenu.astro"
 
-import { Auth } from "../lib/auth"
+import { Auth } from "@/lib/auth"
 
 const auth = await Auth.getUserData(Astro.cookies)
 ---

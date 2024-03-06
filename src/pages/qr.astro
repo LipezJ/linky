@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import ComingSoon from '../components/pages/ComingSoon.astro'
-import NeedAccount from '../components/pages/NeedAccount.astro'
+import Layout from '@/layouts/Layout.astro'
+import ComingSoon from '@/components/pages/ComingSoon.astro'
+import NeedAccount from '@/components/pages/NeedAccount.astro'
 
-import { Auth } from '../lib/auth'
+import { Auth } from '@/lib/auth'
 
 const auth = Auth.isSignedIn(Astro.cookies);
 ---

@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-import { createLink } from "../../db/links";
+import { createLink } from "@/db/links";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
 
