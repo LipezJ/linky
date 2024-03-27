@@ -10,5 +10,7 @@ const auth = Auth.isSignedIn(Astro.cookies);
 
 <Layout title="Qr generator">
   <NeedAccount auth={auth} />
-  <ComingSoon />
+  {
+    auth && <ComingSoon />
+  }
 </Layout>
