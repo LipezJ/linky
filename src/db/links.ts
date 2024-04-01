@@ -3,16 +3,14 @@ import { supabase } from "@/lib/supabase";
 export const createLink = async (link: string) => {
 
   const code =  crypto.randomUUID().split("-")[0];
-  const { data } = await supabase.auth.getUser();
 
   const { error } = await supabase
-    .from("links").insert([
+    .rpc("create_short_link",
       {
-        link,
-        link_short_code: code,
-        user: data.user?.id ?? null,
+        _link: link,
+        _link_short_code: code
       },
-    ]);
+    );
 
   if (error) 
     throw new Error(error.message);
