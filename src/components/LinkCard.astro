@@ -16,17 +16,19 @@ const { new_link } = Astro.props;
     override: true
   };
 
-  const targetElement = document.querySelector('#tooltip');
-  const triggerElement = document.querySelector('#tooltip-trigger');
-  const link = document.querySelector('#link');
+  const link = document.getElementById('link');
+  const targetElement = document.getElementById('tooltip');
+  const triggerElement = document.getElementById('#tooltip-trigger');
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(link.value)
+    if (!targetElement || !triggerElement || !link?.innerText) return;
+    navigator.clipboard.writeText(link.innerText);
     const tooltip = new Tooltip(targetElement, triggerElement, options, instanceOptions);
+
     tooltip.show();
   }
 
-  triggerElement.addEventListener('click', copyToClipboard);
+  triggerElement?.addEventListener('click', copyToClipboard);
 </script>
 
 <div class="p-6 max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -59,7 +61,7 @@ const { new_link } = Astro.props;
     </div>
   </div>
   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-    Here is your link shortener 🔗
+    Here is your link shortener🔗
   </p>
   <a href={`${new_link}`} target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
       Test it
