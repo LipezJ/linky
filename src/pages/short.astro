@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import LinkForm from "@/components/LinkForm.astro"
-import LinkCard from "@/components/LinkCard.tsx"
+import LinkCard from "@/components/LinkCard.astro"
 
 const new_link = Astro.url.searchParams.get('new_link')
 const link = Astro.url.searchParams.get('link')
@@ -21,7 +21,7 @@ const link = Astro.url.searchParams.get('link')
     {
       new_link && link ? (
         <span class="text-lg font-semibold text-gray-900 dark:text-white">Here is your link✨</span>
-        <LinkCard client:only new_link={new_link} />
+        <LinkCard new_link={new_link} />
       ) : (
         <div class="max-w-sm p-6 min-w-max text-gray-900 dark:text-white bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-lg font-medium">
           Your link appears here🔗
