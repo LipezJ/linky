@@ -1,0 +1,79 @@
+---
+import Blank from "@/layouts/Blank.astro";
+import DarkToggle from "@/components/DarkToggle.astro";
+
+import { Templates } from "@/lib/template";
+import { Aggregator } from "@/db/aggregator";
+
+const { redirect } = Astro;
+const { username } = Astro.params;
+
+if (!username) return redirect('/404')
+
+const { data, error } = await Aggregator.get(username);
+if (error) return redirect('/404')
+
+const t = Templates.getTemplate(data.addons.template ?? 'default');
+---
+
+<Blank 
+  title=`${username} links` 
+  className={t.super}
+> 
+  <div class={t.background}></div>
+  <header class={t.header.self}>
+    <div class={t.header.avatar_container}>
+      { data.avatar_url ? 
+        <img class={t.header.avatar} src={data.avatar_url} alt={username} />
+        : 
+        <div class={`${t.header.avatar} relative overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
+          <svg class={`${t.header.avatar} absolute text-gray-400`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+        </div>
+      }
+    </div>
+    <h1 class={t.header.name}>{username}</h1>
+    <div class={t.header.bio}>
+      {data.addons.bio}
+    </div>
+  </header>
+  <section class={t.cont.self}>
+    <article class={t.cont.links.self}>
+      <ul class={t.cont.links.container}>
+        {
+          data.links.map(({ link, text }) => (
+            <li class={t.cont.links.card}>
+              <a href={link} target="_blank" rel="noopener noreferrer" class={t.cont.links.link}>
+                { text }
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+    <article class={t.cont.socials.self}>
+      <ul class={t.cont.socials.container}>
+        {
+          Object.entries(data.addons.socials).map(([name, link]) => {
+            if (link === '') return null;
+            return (
+              <li class={t.cont.socials.card}>
+                <a href={link} target="_blank" rel="noopener noreferrer" class={t.cont.socials.link}>
+                  <i class={`${Templates.getSocialsIcons(name)} ${t.cont.socials.icon}`}></i>
+                </a>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </article>
+  </section>
+  <footer class={t.footer.self}>
+    <DarkToggle className={t.footer.toogle_theme} />
+    <span class={t.footer.text}>
+      Create your own link page on
+      <a href="/" class={t.footer.link}>
+        Linky
+      </a>
+    </span>
+  </footer>
+</Blank>

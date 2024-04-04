@@ -3,7 +3,8 @@ export default {
 	content: [
 		'./src/pages/**/*.{astro,html,ts,tsx}',
     './src/components/**/*.{astro,html,ts,tsx}',
-    './src/layouts/**/*.{astro,html,ts,tsx}'
+    './src/layouts/**/*.{astro,html,ts,tsx}',
+    './src/lib/resources/templates.json'
 	],
 	theme: {
 		extend: {

@@ -1,0 +1,55 @@
+---
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+	title: string;
+	className: string;
+}
+
+const { title, className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="linky, a link shortener" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<script is:inline>
+			if (localStorage.getItem('color-theme') === 'dark' || 
+				(!('color-theme' in localStorage) && 
+				window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		</script>
+		<script is:inline src="https://kit.fontawesome.com/789f909082.js" crossorigin="anonymous"></script>
+	</head>
+	<body class={className}>
+    <slot/>
+	</body>
+</html>
+<style is:global>
+	:root {
+		color-scheme: light dark;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>

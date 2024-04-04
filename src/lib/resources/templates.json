@@ -1,0 +1,39 @@
+{
+  "default": {
+    "background": "absolute -z-10 bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]",
+    "super": "flex flex-col gap-2 items-center bg-white dark:bg-slate-950 text-black dark:text-white w-full",
+    "header": {
+      "self": "flex flex-col justify-end items-center px-4 py-2 border-gray-200 max-h-[250px] min-h-[250px]",
+      "avatar_container": "",
+      "avatar": "size-24 rounded-full",
+      "name": "font-bold text-2xl",
+      "bio": "text-gray-400 font-semibold text-lg text-center"
+    },
+    "cont": {
+      "self": "flex flex-col gap-6 max-w-[600px] w-full min-h-[calc(100dvh-250px)] p-4 h-fit",
+      "links": {
+        "self": "w-full",
+        "container": "flex flex-col gap-2 items-center",
+        "card": "text-lg text-center font-semibold bg-gray-600/20 hover:bg-gray-600/40 hover:scale-105 transition rounded-lg w-4/5",
+        "link": "flex w-full justify-center items-center gap-2 p-4"
+      },
+      "socials": {
+        "self": "flex justify-center self-end w-full mt-auto mb-8",
+        "container": "flex gap-2",
+        "card": "",
+        "link": "",
+        "icon": "size-8"
+      }
+    },
+    "footer": {
+      "self": "flex items-center gap-2 p-4 bg-gray-700/20 my-2 rounded-lg",
+      "text": "text-gray-900 dark:text-gray-400 font-semibold text-xs",
+      "link": "border-b border-gray-900 dark:border-gray-400",
+      "toogle_theme": "text-gray-900 dark:text-gray-400 font-semibold text-xs cursor-pointer"
+    }
+  },
+  "default2": {
+    "template": "default",
+    "super": "flex flex-col gap-2 items-center bg-white dark:bg-black text-black dark:text-white w-full"
+  }
+}
