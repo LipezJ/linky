@@ -1,5 +1,6 @@
-import type { Addons, Link, Socials } from "@/db/types/aggregator.types"
 import { useEffect, useState } from "preact/hooks"
+
+import type { Addons, Link, Socials } from "@/lib/types/aggregator.types"
 
 export function useAddons(addons: Addons) {
 	const [state, setState] = useState(addons)

@@ -1,4 +1,4 @@
-import type { Link } from "@/db/types/aggregator.types"
+import type { Link } from "@/lib/types/aggregator.types"
 
 export default function LinkEditor({
 	link,

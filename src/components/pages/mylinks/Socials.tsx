@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks"
 
-import type { Socials } from "@/db/types/aggregator.types"
+import type { Socials } from "@/lib/types/aggregator.types"
 
 export default function Socials({
 	socials,

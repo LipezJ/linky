@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks"
-
-import type { Link } from "@/db/types/aggregator.types"
 import LinkEditor from "./LinkEditor"
+
+import type { Link } from "@/lib/types/aggregator.types"
 
 export default function LinkAggCard({
 	link,

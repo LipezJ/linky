@@ -4,7 +4,7 @@ import Socials from "./Socials"
 import TemplatePicker from "./TemplatePicker"
 import Bio from "./Bio"
 
-import type { Addons } from "@/db/types/aggregator.types"
+import type { Addons } from "@/lib/types/aggregator.types"
 
 export default function Addons(props: { addons: Addons; user: string }) {
 	const { addons, updateBio, updateSocials, updateTemplate } = useAddons(props.addons)
