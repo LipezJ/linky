@@ -3,17 +3,25 @@ import Blank from "@/layouts/Blank.astro";
 import DarkToggle from "@/components/DarkToggle.astro";
 
 import { Templates } from "@/lib/template";
-import { Aggregator } from "@/db/aggregator";
+import { Aggregator } from "@/lib/aggregator";
 
 const { redirect } = Astro;
 const { username } = Astro.params;
+const customTemplate = Astro.url.searchParams.get('tmpl');
 
 if (!username) return redirect('/404')
 
-const { data, error } = await Aggregator.get(username);
-if (error) return redirect('/404')
+const data = await Aggregator.get(username);
+if (!data) return redirect('/404')
 
-const t = Templates.getTemplate(data.addons.template ?? 'default');
+let t;
+
+if (customTemplate) {
+  t = Templates.getTemplate(customTemplate);
+  t = t ? t : Templates.getTemplate('default');
+} else {
+  t = Templates.getTemplate(data.addons.template ?? 'default');
+}
 ---
 
 <Blank 
@@ -57,7 +65,12 @@ const t = Templates.getTemplate(data.addons.template ?? 'default');
             if (link === '') return null;
             return (
               <li class={t.cont.socials.card}>
-                <a href={link} target="_blank" rel="noopener noreferrer" class={t.cont.socials.link}>
+                <a 
+                  href={`${Templates.getSocialsLink(name, link)}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class={t.cont.socials.link}
+                >
                   <i class={`${Templates.getSocialsIcons(name)} ${t.cont.socials.icon}`}></i>
                 </a>
               </li>

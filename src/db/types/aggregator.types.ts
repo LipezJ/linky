@@ -1,9 +1,9 @@
-interface Links {
+export interface Link {
   text: string;
   link: string | undefined;
 }
 
-interface Socials {
+export interface Socials {
   instagram: string | undefined;
   linkedin: string | undefined;
   facebook: string | undefined;
@@ -12,13 +12,17 @@ interface Socials {
   x: string | undefined;
 }
 
+type SocialsKeys = keyof Socials;
+
+export interface Addons {
+  template: string | undefined;
+  bio: string;
+  socials: Socials
+}
+
 export interface AggregatorData {
   user_name: string;
   avatar_url: string | null;
-  links: Links[]
-  addons: {
-    template: string | undefined;
-    bio: string;
-    socials: Socials
-  }
+  links: Link[];
+  addons: Addons;
 }

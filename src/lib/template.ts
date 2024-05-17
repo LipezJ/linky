@@ -17,6 +17,14 @@ export class Templates {
     tiktok: "fa-brands fa-tiktok",
     x: "fa-brands fa-x-twitter"
   }
+  static links = {
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    facebook: "https://facebook.com/",
+    github: "https://github.com/",
+    tiktok: "https://tiktok.com/",
+    x: "https://twitter.com/"
+  }
 
   static {
     Templates.list = templates;
@@ -44,5 +52,10 @@ export class Templates {
 
   static isNested(template: Template | NestedTemplate): template is NestedTemplate {
     return (template as NestedTemplate).template !== undefined;
+  }
+
+  static getSocialsLink(name: string, username: string) {
+    const link = this.links[name as keyof typeof this.links];
+    return link ? `${link}${username}` : "";
   }
 }
