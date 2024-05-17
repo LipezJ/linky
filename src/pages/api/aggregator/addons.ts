@@ -1,7 +1,7 @@
 import { Aggregator } from "@/lib/aggregator";
 
 import type { APIRoute } from "astro";
-import type { Addons } from "@/db/types/aggregator.types";
+import type { Addons } from "@/lib/types/aggregator.types";
 
 export const POST: APIRoute = async ({ request, cookies }) => {
 
