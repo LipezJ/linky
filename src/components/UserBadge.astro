@@ -7,37 +7,65 @@ const auth = await Auth.getUserData(Astro.cookies)
 ---
 
 {
-  auth ? 
-    <button 
-      id="dropdownDefaultButton" 
-      data-dropdown-toggle="dropdown" 
-      class="flex items-center gap-1.5 font-bold text-black hover:bg-gray-50 px-1.5 rounded-md dark:text-white dark:hover:bg-slate-700"
-      type="button"
-    >
-      { auth.user?.user_metadata.user_name }
-      { auth.user?.user_metadata.avatar_url ? 
-        <img src={auth.user?.user_metadata.avatar_url} class="size-10 rounded-full" /> 
-        : 
-        <div class="relative size-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-          <svg class="absolute size-10 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-        </div>
-      }
-      <svg 
-        class="w-2.5 h-2.5" 
-        aria-hidden="true" 
-        xmlns="http://www.w3.org/2000/svg" 
-        fill="none" 
-        viewBox="0 0 10 6"
-      >
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg>
-    </button>
-    <UserMenu />
-    :
-    <a href="/signin" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-      Log in
-    </a>
-    <a href="/register" class="w-fit inline-flex items-center justify-center px-5 py-2 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-      Sign up
-    </a>
+	auth ? (
+		<>
+			<button
+				id="dropdownDefaultButton"
+				data-dropdown-toggle="dropdown"
+				class="flex items-center gap-1.5 rounded-md px-1.5 font-bold text-black hover:bg-gray-50 dark:text-white dark:hover:bg-slate-700"
+				type="button"
+			>
+				{auth.user?.user_metadata.user_name}
+				{auth.user?.user_metadata.avatar_url ? (
+					<img src={auth.user?.user_metadata.avatar_url} class="size-10 rounded-full" />
+				) : (
+					<div class="relative size-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+						<svg
+							class="absolute size-10 text-gray-400"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</div>
+				)}
+				<svg
+					class="h-2.5 w-2.5"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 10 6"
+				>
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="m1 1 4 4 4-4"
+					/>
+				</svg>
+			</button>
+			<UserMenu />
+		</>
+	) : (
+		<>
+			<a
+				href="/signin"
+				class="mr-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 lg:px-5 lg:py-2.5"
+			>
+				Log in
+			</a>
+			<a
+				href="/register"
+				class="inline-flex w-fit items-center justify-center rounded-lg bg-blue-700 px-5 py-2 text-center text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+			>
+				Sign up
+			</a>
+		</>
+	)
 }

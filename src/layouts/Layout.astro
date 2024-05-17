@@ -1,12 +1,12 @@
 ---
-import Header from '@/components/Header.astro';
-import Footer from '@/components/Footer.astro';
+import Footer from "@/components/Footer.astro"
+import Header from "@/components/Header.astro"
 
 interface Props {
-	title: string;
+	title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -19,26 +19,27 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<script is:inline>
-			if (localStorage.getItem('color-theme') === 'dark' || 
-				(!('color-theme' in localStorage) && 
-				window.matchMedia('(prefers-color-scheme: dark)').matches)
+			if (
+				localStorage.getItem("color-theme") === "dark" ||
+				(!("color-theme" in localStorage) &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches)
 			) {
-				document.documentElement.classList.add('dark');
+				document.documentElement.classList.add("dark")
 			} else {
-				document.documentElement.classList.remove('dark')
+				document.documentElement.classList.remove("dark")
 			}
 		</script>
 	</head>
 	<body class="bg-white dark:bg-slate-950">
-		<div 
-			class="absolute inset-0 -z-10 h-full w-full 
+		<div
+			class="absolute inset-0 -z-10 h-full w-full
 				bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
 		>
 		</div>
 		<Header />
-			<section class="slot">
-				<slot />
-			</section>
+		<section class="slot">
+			<slot />
+		</section>
 		<Footer />
 	</body>
 </html>

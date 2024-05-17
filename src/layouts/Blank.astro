@@ -1,10 +1,10 @@
 ---
 interface Props {
-	title: string;
-	className: string;
+	title: string
+	className: string
 }
 
-const { title, className } = Astro.props;
+const { title, className } = Astro.props
 ---
 
 <!doctype html>
@@ -17,19 +17,21 @@ const { title, className } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<script is:inline>
-			if (localStorage.getItem('color-theme') === 'dark' || 
-				(!('color-theme' in localStorage) && 
-				window.matchMedia('(prefers-color-scheme: dark)').matches)
+			if (
+				localStorage.getItem("color-theme") === "dark" ||
+				(!("color-theme" in localStorage) &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches)
 			) {
-				document.documentElement.classList.add('dark');
+				document.documentElement.classList.add("dark")
 			} else {
-				document.documentElement.classList.remove('dark')
+				document.documentElement.classList.remove("dark")
 			}
 		</script>
-		<script is:inline src="https://kit.fontawesome.com/789f909082.js" crossorigin="anonymous"></script>
+		<script is:inline src="https://kit.fontawesome.com/789f909082.js" crossorigin="anonymous"
+		></script>
 	</head>
 	<body class={className}>
-    <slot/>
+		<slot />
 	</body>
 </html>
 <style is:global>

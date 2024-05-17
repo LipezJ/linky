@@ -1,21 +1,23 @@
-<form 
-  class="max-w-xl mx-auto p-8" 
-  action="/api/short" 
-  method="POST"
-  enctype="multipart/form-data"
->
-  <label for="email" class="block mb-2 text-xl font-medium  text-gray-900 dark:text-white">Put your link here 👇</label>
-  <div class="flex gap-2 flex-wrap justify-center">
-    <input 
-      type="url" 
-      name="link" 
-      class="text-lg bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
-      required
-      placeholder="https://google.com"
-    >
-    <button type="submit" class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-lg w-1/4 min-w-max sm:w-auto p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-      Shorten link
-    </button>
-  </div>
-  <span class="text-gray-700 text-xs">If you do not have an account the links can only be used 100 times</span>
+<form class="mx-auto max-w-xl p-8" action="/api/short" method="POST" enctype="multipart/form-data">
+	<label for="email" class="mb-2 block text-xl font-medium text-gray-900 dark:text-white"
+		>Put your link here 👇</label
+	>
+	<div class="flex flex-wrap justify-center gap-2">
+		<input
+			type="url"
+			name="link"
+			class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-lg text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 md:w-3/4"
+			required
+			placeholder="https://google.com"
+		/>
+		<button
+			type="submit"
+			class="w-1/4 min-w-max rounded-lg bg-blue-600 p-2 text-center text-lg font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-800 sm:w-auto"
+		>
+			Shorten link
+		</button>
+	</div>
+	<span class="text-xs text-gray-700"
+		>If you do not have an account the links can only be used 100 times</span
+	>
 </form>

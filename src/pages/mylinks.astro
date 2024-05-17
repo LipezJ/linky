@@ -1,81 +1,80 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import MylinksForm from '@/components/pages/MyLinksForm.astro';
-import NeedAccount from '@/components/pages/NeedAccount.astro';
+import MylinksForm from "@/components/pages/MyLinksForm.astro"
+import NeedAccount from "@/components/pages/NeedAccount.astro"
+import Layout from "@/layouts/Layout.astro"
 
-import { Auth } from '@/lib/auth';
-import { Aggregator } from '@/lib/aggregator';
+import { Aggregator } from "@/lib/aggregator"
+import { Auth } from "@/lib/auth"
 
-const auth = await Auth.getUserData(Astro.cookies);
-let aggregator = null;
+const auth = await Auth.getUserData(Astro.cookies)
+let aggregator = null
 
 if (auth && auth.user) {
-  aggregator = await Aggregator.get(auth.user.user_metadata.user_name);
+	aggregator = await Aggregator.get(auth.user.user_metadata.user_name)
 }
 ---
 
 <Layout title="My links">
-  {
-    auth ?
-      <section class="flex justify-center items-center w-full">
-        {
-        aggregator ?
-          <div class="rounded-xl min-h-[80dvh] w-full max-w-5xl m-4 md:m-8 p-6 md:p-10 bg-white shadow border-b border-gray-200 dark:bg-slate-900 dark:border-none">
-            <header class="flex justify-between">
-              <h1>My links</h1>
-              <a 
-                class="w-fit px-5 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" 
-                href={`/ag/${auth.user?.user_metadata.user_name}`} target="_blank"
-              >
-                Preview
-              </a>
-            </header>
-            {
-              aggregator && <MylinksForm agg={aggregator} />
-            }
-          </div>
-          :
-          <div class="rounded-xl h-fit w-fit max-w-xl m-4 md:m-8 p-6 md:p-10 ">
-            <div class="pt-10 pb-6">
-              <h1 class="text-5xl font-bold text-center text-gray-900 dark:text-white">
-                Link Aggregator👌
-              </h1>
-              <p class="text-center mt-1.5 text-lg font-semibold text-gray-500 dark:text-gray-400">
-                Share your links with the world
-              </p>
-            </div>
-            <div class="flex flex-col items-center justify-center gap-2">
-              <span class="text-gray-500 dark:text-gray-400">
-                Do you want to create your own link aggregator?
-              </span>
-              <button
-                type="submit"
-                id="create-aggregator"
-                class="w-fit px-5 py-2 text-lg font-semibold text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" 
-              >
-                Create ✨
-              </button>
-            </div>
-          </div>
-        }
-      </section>
-    :
-    <NeedAccount />
-  }
+	{
+		auth ? (
+			<section class="flex w-full items-center justify-center">
+				{aggregator ? (
+					<div class="m-4 min-h-[80dvh] w-full max-w-5xl rounded-xl border-b border-gray-200 bg-white p-6 shadow dark:border-none dark:bg-slate-900 md:m-8 md:p-10">
+						<header class="flex justify-between">
+							<h1>My links</h1>
+							<a
+								class="w-fit rounded-lg bg-blue-700 px-5 py-2 text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+								href={`/ag/${auth.user?.user_metadata.user_name}`}
+								target="_blank"
+							>
+								Preview
+							</a>
+						</header>
+						{aggregator && <MylinksForm agg={aggregator} />}
+					</div>
+				) : (
+					<div class="m-4 h-fit w-fit max-w-xl rounded-xl p-6 md:m-8 md:p-10 ">
+						<div class="pb-6 pt-10">
+							<h1 class="text-center text-5xl font-bold text-gray-900 dark:text-white">
+								Link Aggregator👌
+							</h1>
+							<p class="mt-1.5 text-center text-lg font-semibold text-gray-500 dark:text-gray-400">
+								Share your links with the world
+							</p>
+						</div>
+						<div class="flex flex-col items-center justify-center gap-2">
+							<span class="text-gray-500 dark:text-gray-400">
+								Do you want to create your own link aggregator?
+							</span>
+							<button
+								type="submit"
+								id="create-aggregator"
+								class="w-fit rounded-lg bg-blue-700 px-5 py-2 text-lg font-semibold text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+							>
+								Create ✨
+							</button>
+						</div>
+					</div>
+				)}
+			</section>
+		) : (
+			<NeedAccount />
+		)
+	}
 </Layout>
 
 <script>
-  const createAggregator = async () => {
-    const response = await fetch('/api/aggregator/create', { method: 'POST' })
+	const createAggregator = async () => {
+		const response = await fetch("/api/aggregator/create", { method: "POST" })
 
-    if (response.ok) {
-      window.location.reload();
-    }
-  }
+		if (response.ok) {
+			window.location.reload()
+		}
+	}
 
-  const $createButton = document.getElementById('create-aggregator');
+	const $createButton = document.getElementById("create-aggregator")
 
-  if ($createButton) {
-    $createButton.addEventListener('click', createAggregator);
-  }
+	if ($createButton) {
+		$createButton.addEventListener("click", createAggregator)
+	}
 </script>

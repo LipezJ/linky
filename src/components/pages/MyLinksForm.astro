@@ -1,25 +1,23 @@
 ---
 import type { AggregatorData } from "@/db/types/aggregator.types"
-import Links from "./mylinks/Links"
 import Addons from "./mylinks/Addons"
+import Links from "./mylinks/Links"
 
 interface Props {
-  agg: AggregatorData
+	agg: AggregatorData
 }
 
-const { agg } = Astro.props;
+const { agg } = Astro.props
 ---
 
-<article class="flex flex-col md:flex-row gap-2 justify-center md:gap-10 md:ml-10 mt-4">
-  <section class="flex flex-col gap-4 w-full lg:w-2/6">
-    <Addons client:only addons={agg.addons} user={agg.user_name} />
-  </section>
-  <section class="flex flex-col md:flex-row gap-4 w-full lg:w-4/5">
-    <div class="w-full">
-      <h2 class="text-xl mb-2 font-semibold text-black dark:text-gray-400">
-        Links
-      </h2>
-      <Links client:only links={agg.links} />
-    </div>
-  </section>
+<article class="mt-4 flex flex-col justify-center gap-2 md:ml-10 md:flex-row md:gap-10">
+	<section class="flex w-full flex-col gap-4 lg:w-2/6">
+		<Addons client:only addons={agg.addons} user={agg.user_name} />
+	</section>
+	<section class="flex w-full flex-col gap-4 md:flex-row lg:w-4/5">
+		<div class="w-full">
+			<h2 class="mb-2 text-xl font-semibold text-black dark:text-gray-400">Links</h2>
+			<Links client:only links={agg.links} />
+		</div>
+	</section>
 </article>

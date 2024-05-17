@@ -26,7 +26,7 @@
       }
     },
     "footer": {
-      "self": "flex items-center gap-2 p-4 bg-gray-700/20 my-2 rounded-lg", 
+      "self": "flex items-center gap-2 p-4 bg-gray-700/20 my-2 rounded-lg",
       "text": "text-gray-900 dark:text-gray-400 font-semibold text-xs",
       "link": "border-b border-gray-900 dark:border-gray-400",
       "toogle_theme": "text-gray-900 dark:text-gray-400 font-semibold text-xs cursor-pointer"

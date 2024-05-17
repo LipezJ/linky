@@ -1,19 +1,19 @@
 ---
-import NavBar from "./NavBar.astro";
+import NavBar from "./NavBar.astro"
 ---
 
 <header class="shadow-md">
-  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-      <a href="/" class="flex items-center">
-        <span class="text-3xl">
-          🔗
-        </span>
-        <span class="self-center text-xl font-extrabold whitespace-nowrap text-gray-900 dark:text-white">
-          Linky
-        </span>
-      </a>
-      <NavBar />
-    </div>
-  </nav>
+	<nav class="border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-800 lg:px-6">
+		<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
+			<a href="/" class="flex items-center">
+				<span class="text-3xl"> 🔗 </span>
+				<span
+					class="self-center whitespace-nowrap text-xl font-extrabold text-gray-900 dark:text-white"
+				>
+					Linky
+				</span>
+			</a>
+			<NavBar />
+		</div>
+	</nav>
 </header>

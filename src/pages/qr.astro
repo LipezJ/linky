@@ -1,16 +1,14 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import ComingSoon from '@/components/pages/ComingSoon.astro'
-import NeedAccount from '@/components/pages/NeedAccount.astro'
+import ComingSoon from "@/components/pages/ComingSoon.astro"
+import NeedAccount from "@/components/pages/NeedAccount.astro"
+import Layout from "@/layouts/Layout.astro"
 
-import { Auth } from '@/lib/auth'
+import { Auth } from "@/lib/auth"
 
-const auth = Auth.isSignedIn(Astro.cookies);
+const auth = Auth.isSignedIn(Astro.cookies)
 ---
 
 <Layout title="Qr generator">
-  <NeedAccount auth={auth} />
-  {
-    auth && <ComingSoon />
-  }
+	<NeedAccount auth={auth} />
+	{auth && <ComingSoon />}
 </Layout>
