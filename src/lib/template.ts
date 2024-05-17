@@ -1,5 +1,5 @@
 import templates from "@/lib/resources/templates.json"
-import type { TemplateList, NestedTemplate, Template } from "@/lib/types/templates.types"
+import type { NestedTemplate, Template, TemplateList } from "@/lib/types/templates.types"
 
 export class Templates {
 	static list: TemplateList
@@ -12,6 +12,7 @@ export class Templates {
 		tiktok: "fa-brands fa-tiktok",
 		x: "fa-brands fa-x-twitter",
 	}
+
 	static links = {
 		instagram: "https://instagram.com/",
 		linkedin: "https://linkedin.com/in/",

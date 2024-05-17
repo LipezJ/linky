@@ -1,12 +1,11 @@
 import { useAddons } from "@/hooks/aggregator"
-
-import Socials from "./Socials"
-import TemplatePicker from "./TemplatePicker"
-import Bio from "./Bio"
-
 import type { Addons } from "@/lib/types/aggregator.types"
 
-export default function Addons(props: { addons: Addons; user: string }) {
+import Bio from "./Bio"
+import Socials from "./Socials"
+import TemplatePicker from "./TemplatePicker"
+
+export default function AddonsForm(props: { addons: Addons; user: string }) {
 	const { addons, updateBio, updateSocials, updateTemplate } = useAddons(props.addons)
 
 	return (

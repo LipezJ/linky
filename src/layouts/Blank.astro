@@ -30,7 +30,7 @@ const { title, className } = Astro.props
 		<script is:inline src="https://kit.fontawesome.com/789f909082.js" crossorigin="anonymous"
 		></script>
 	</head>
-	<body class={className}>
+	<body class:list={className}>
 		<slot />
 	</body>
 </html>

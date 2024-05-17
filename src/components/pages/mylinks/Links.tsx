@@ -1,12 +1,12 @@
 import { useState } from "preact/hooks"
+
 import { useLinks } from "@/hooks/aggregator"
-
-import LinkEditor from "./LinkEditor"
-import LinkAggCard from "./LinkAggCard"
-
 import type { Link } from "@/lib/types/aggregator.types"
 
-export default function Link(props: { links: Link[] }) {
+import LinkAggCard from "./LinkAggCard"
+import LinkEditor from "./LinkEditor"
+
+export default function Links(props: { links: Link[] }) {
 	const [mode, setMode] = useState<"add" | "view">("view")
 	const { links, addLink, updateLink, removeLink } = useLinks(props.links)
 

@@ -1,5 +1,4 @@
 import { supabase } from "@/lib/supabase"
-
 import type { Addons, AggregatorData, Link } from "@/lib/types/aggregator.types"
 import type { Token } from "@/lib/types/supabase.types"
 

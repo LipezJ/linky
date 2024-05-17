@@ -1,6 +1,7 @@
-import type { APIRoute } from "astro"
 import { supabase } from "@/lib/supabase"
+
 import type { Provider } from "@supabase/supabase-js"
+import type { APIRoute } from "astro"
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 	const formData = await request.formData()

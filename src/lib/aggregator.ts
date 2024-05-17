@@ -1,11 +1,11 @@
 import {
 	getAggregator,
+	initAggregator,
 	updateAggregatorAddons,
 	updateAggregatorLinks,
-	initAggregator,
 } from "@/db/aggregator"
-
 import type { Addons, Link } from "@/lib/types/aggregator.types"
+
 import type { AstroCookies } from "astro"
 
 export class Aggregator {

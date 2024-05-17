@@ -33,7 +33,7 @@ export function useAddons(addons: Addons) {
 		const body = JSON.stringify(state)
 		if (body === JSON.stringify(addons)) return
 
-		fetch("/api/aggregator/addons", { body, method: "POST" })
+		const _ = fetch("/api/aggregator/addons", { body, method: "POST" })
 	}, [state])
 
 	return {
@@ -74,7 +74,7 @@ export function useLinks(links: Link[]) {
 		const body = JSON.stringify(state)
 		if (body === JSON.stringify(links)) return
 
-		fetch("/api/aggregator/links", { body, method: "POST" })
+		const _ = fetch("/api/aggregator/links", { body, method: "POST" })
 	}, [state])
 
 	return {

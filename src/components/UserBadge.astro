@@ -1,7 +1,7 @@
 ---
-import UserMenu from "./UserMenu.astro"
-
 import { Auth } from "@/lib/auth"
+
+import UserMenu from "./UserMenu.astro"
 
 const auth = await Auth.getUserData(Astro.cookies)
 ---
@@ -17,7 +17,11 @@ const auth = await Auth.getUserData(Astro.cookies)
 			>
 				{auth.user?.user_metadata.user_name}
 				{auth.user?.user_metadata.avatar_url ? (
-					<img src={auth.user?.user_metadata.avatar_url} class="size-10 rounded-full" />
+					<img
+						src={auth.user?.user_metadata.avatar_url}
+						class="size-10 rounded-full"
+						alt="User avatar"
+					/>
 				) : (
 					<div class="relative size-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
 						<svg

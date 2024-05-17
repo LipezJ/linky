@@ -1,5 +1,6 @@
-import { Templates } from "@/lib/template"
 import { useState } from "preact/hooks"
+
+import { Templates } from "@/lib/template"
 
 export default function TemplatePicker({
 	current,
@@ -40,9 +41,13 @@ export default function TemplatePicker({
 						{current && templates.includes(current) ? current : "Select a template"}
 					</option>
 					{Templates.list &&
-						templates.map((template) => {
-							if (template === current) return
-							return <option value={template}>{template}</option>
+						templates.map((template, index) => {
+							if (template === current) return null
+							return (
+								<option key={index} value={template}>
+									{template}
+								</option>
+							)
 						})}
 				</select>
 				<a

@@ -1,7 +1,9 @@
 import { map } from "nanostores"
+
 import { supabase } from "./supabase"
-import type { AstroCookies } from "astro"
+
 import type { Session, User } from "@supabase/supabase-js"
+import type { AstroCookies } from "astro"
 
 interface AuthInterface {
 	userData: {
