@@ -1,4 +1,4 @@
-import type { Addons, AggregatorData, Link, Socials } from "@/db/types/aggregator.types";
+import type { Addons, Link, Socials } from "@/db/types/aggregator.types";
 import { useEffect, useState } from "preact/hooks";
 
 export function useAddons(addons: Addons) {

@@ -5,7 +5,7 @@ import {
   initAggregator
 } from "@/db/aggregator";
 
-import type { Addons, AggregatorData, Link, Socials } from "@/db/types/aggregator.types";
+import type { Addons, Link } from "@/db/types/aggregator.types";
 import type { AstroCookies } from "astro";
 
 export class Aggregator {

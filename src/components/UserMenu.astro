@@ -1,29 +1,3 @@
-<script>
-  import { Dropdown } from "flowbite";
-  import type { DropdownOptions, DropdownInterface, InstanceOptions } from 'flowbite';
-
-  const $targetEl = document.getElementById('dropdownMenu');
-  const $triggerEl = document.getElementById('dropdownButton');
-
-  const options: DropdownOptions = {
-    placement: 'bottom',
-    triggerType: 'click',
-    offsetSkidding: 0,
-    offsetDistance: 10,
-    delay: 150
-  };
-
-  const instanceOptions: InstanceOptions = {
-    id: 'dropdownMenu',
-    override: true
-  };
-
-  const dropdown = () => {
-    const instance = new Dropdown($targetEl, $triggerEl, options, instanceOptions);
-    instance.toggle();
-  }
-</script>
-
 <section>
   <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-slate-700 font-semibold">
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown">

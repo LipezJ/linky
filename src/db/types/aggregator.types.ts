@@ -12,8 +12,6 @@ export interface Socials {
   x: string | undefined;
 }
 
-type SocialsKeys = keyof Socials;
-
 export interface Addons {
   template: string | undefined;
   bio: string;
