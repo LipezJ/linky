@@ -10,7 +10,7 @@
       "bio": "text-gray-400 font-semibold text-lg text-center"
     },
     "cont": {
-      "self": "flex flex-col gap-6 max-w-[600px] w-full min-h-[calc(100dvh-250px)] p-4 h-fit",
+      "self": "flex flex-col justify-between gap-6 max-w-[600px] w-full min-h-[calc(100dvh-250px)] p-4",
       "links": {
         "self": "w-full",
         "container": "flex flex-col gap-2 items-center",
@@ -18,7 +18,7 @@
         "link": "flex w-full justify-center items-center gap-2 p-4"
       },
       "socials": {
-        "self": "flex justify-center self-end w-full mt-auto mb-8",
+        "self": "flex justify-center self-end w-full mb-8",
         "container": "flex gap-2",
         "card": "",
         "link": "",
