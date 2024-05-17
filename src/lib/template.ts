@@ -34,6 +34,10 @@ export class Templates {
 
     const template = this.list[name];
 
+    if (!template) {
+      return this.list.default as Template;
+    }
+
     if (this.isNested(template)) {
       const nested = this.getTemplate(template.template);
       return {
