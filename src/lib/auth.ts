@@ -9,7 +9,10 @@ export class Auth {
 
 		if (accessToken && refreshToken) {
 			const client = createClient(cookies)
-			const { data, error } = await client.auth.getUser(accessToken.value)
+			const { data, error } = await client.auth.setSession({
+				access_token: accessToken.value,
+				refresh_token: refreshToken.value,
+			})
 
 			if (error) {
 				cookies.delete("sb-access-token", {
