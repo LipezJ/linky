@@ -1,4 +1,5 @@
 ---
+import { Templates } from "@/lib/template"
 import type { AggregatorData } from "@/lib/types/aggregator.types"
 
 import Addons from "./mylinks/Addons"
@@ -9,16 +10,17 @@ interface Props {
 }
 
 const { agg } = Astro.props
+const templates = Templates.getTemplateNames()
 ---
 
 <article class="mt-4 flex flex-col justify-center gap-2 md:ml-10 md:flex-row md:gap-10">
 	<section class="flex w-full flex-col gap-4 lg:w-2/6">
-		<Addons client:only={true} addons={agg.addons} user={agg.user_name} />
+		<Addons client:load addons={agg.addons} user={agg.user_name} templates={templates} />
 	</section>
 	<section class="flex w-full flex-col gap-4 md:flex-row lg:w-4/5">
 		<div class="w-full">
 			<h2 class="mb-2 text-xl font-semibold text-black dark:text-gray-400">Links</h2>
-			<Links client:only={true} links={agg.links} />
+			<Links client:load links={agg.links} />
 		</div>
 	</section>
 </article>

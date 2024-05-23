@@ -1,17 +1,16 @@
 import { useState } from "preact/hooks"
 
-import { Templates } from "@/lib/template"
-
 export default function TemplatePicker({
+	templates,
 	current,
 	user,
 	onUpdate,
 }: {
+	templates: string[]
 	current: string | undefined
 	user: string
 	onUpdate: (value: string) => void
 }) {
-	const templates = Object.keys(Templates.list)
 	const [template, setTemplate] = useState(current)
 
 	const select = (e: Event) => {
@@ -40,7 +39,7 @@ export default function TemplatePicker({
 					<option selected>
 						{current && templates.includes(current) ? current : "Select a template"}
 					</option>
-					{Templates.list &&
+					{templates &&
 						templates.map((template, index) => {
 							if (template === current) return null
 							return (

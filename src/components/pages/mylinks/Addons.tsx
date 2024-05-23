@@ -5,7 +5,7 @@ import Bio from "./Bio"
 import Socials from "./Socials"
 import TemplatePicker from "./TemplatePicker"
 
-export default function AddonsForm(props: { addons: Addons; user: string }) {
+export default function AddonsForm(props: { addons: Addons; user: string; templates: string[] }) {
 	const { addons, updateBio, updateSocials, updateTemplate } = useAddons(props.addons)
 
 	return (
@@ -16,7 +16,12 @@ export default function AddonsForm(props: { addons: Addons; user: string }) {
 			</div>
 			<div class="w-full">
 				<h2 class="mb-2 text-xl font-semibold text-black dark:text-gray-400">Templates</h2>
-				<TemplatePicker current={addons.template} user={props.user} onUpdate={updateTemplate} />
+				<TemplatePicker
+					templates={props.templates}
+					current={addons.template}
+					user={props.user}
+					onUpdate={updateTemplate}
+				/>
 			</div>
 			<div class="w-full">
 				<h2 class="mb-2 text-xl font-semibold text-black dark:text-gray-400">Socials</h2>

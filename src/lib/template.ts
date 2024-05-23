@@ -57,4 +57,8 @@ export class Templates {
 		const link = this.links[name as keyof typeof this.links]
 		return link ? `${link}${username}` : ""
 	}
+
+	static getTemplateNames() {
+		return Object.keys(this.list)
+	}
 }
