@@ -3,7 +3,9 @@ import { Auth } from "@/lib/auth"
 
 import UserMenu from "./UserMenu.astro"
 
-const auth = await Auth.getUserData(Astro.cookies)
+const cookies = Astro.cookies
+const auth = Auth.isSignedIn(cookies)
+const userInfo = Auth.getUserInfo(cookies)
 ---
 
 {
@@ -15,13 +17,9 @@ const auth = await Auth.getUserData(Astro.cookies)
 				class="flex items-center gap-1.5 rounded-md px-1.5 font-bold text-black hover:bg-gray-50 dark:text-white dark:hover:bg-slate-700"
 				type="button"
 			>
-				{auth.user?.user_metadata.user_name}
-				{auth.user?.user_metadata.avatar_url ? (
-					<img
-						src={auth.user?.user_metadata.avatar_url}
-						class="size-10 rounded-full"
-						alt="User avatar"
-					/>
+				{userInfo?.user_name ?? ""}
+				{userInfo?.avatar_url ? (
+					<img src={userInfo.avatar_url} class="size-10 rounded-full" alt="User avatar" />
 				) : (
 					<div class="relative size-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
 						<svg

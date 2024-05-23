@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase"
+import { createClient } from "@/lib/supabase"
 
 import type { APIRoute } from "astro"
 
@@ -9,7 +9,8 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
 		return new Response("No code provided", { status: 400 })
 	}
 
-	const { data, error } = await supabase.auth.exchangeCodeForSession(authCode)
+	const client = createClient(cookies)
+	const { data, error } = await client.auth.exchangeCodeForSession(authCode)
 
 	if (error) {
 		return new Response(error.message, { status: 500 })
@@ -23,6 +24,16 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
 	cookies.set("sb-refresh-token", refresh_token, {
 		path: "/",
 	})
+	cookies.set(
+		"sb-user",
+		JSON.stringify({
+			user_name: data.user.user_metadata.user_name as string,
+			avatar_url: data.user.user_metadata.avatar_url as string | undefined,
+		}),
+		{
+			path: "/",
+		}
+	)
 
 	return redirect("/")
 }

@@ -2,7 +2,7 @@ import { Link } from "@/lib/link"
 
 import type { APIRoute } from "astro"
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request, redirect, cookies }) => {
 	const form = await request.formData()
 	const link = form.get("link")?.toString()
 
@@ -11,7 +11,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 	}
 
 	try {
-		const new_link_code = await Link.createLink(link)
+		const new_link_code = await Link.createLink(link, cookies)
 		const new_link = `${import.meta.env.PUBLIC_URL}/lk/${new_link_code}`
 
 		return redirect(`/short?${new URLSearchParams({ new_link, link }).toString()}`)

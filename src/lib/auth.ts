@@ -1,60 +1,56 @@
-import { map } from "nanostores"
+import { createClient } from "./supabase"
 
-import { supabase } from "./supabase"
-
-import type { Session, User } from "@supabase/supabase-js"
+import type { UserInfo } from "./types/auth.types"
 import type { AstroCookies } from "astro"
 
-interface AuthInterface {
-	userData: {
-		user: User | null
-		session: Session | null
-	} | null
-}
-
 export class Auth {
-	private static auth = map<AuthInterface>({
-		userData: null,
-	})
-
 	static async getUserData(cookies: AstroCookies) {
-		const accessToken = cookies.get("sb-access-token")
-		const refreshToken = cookies.get("sb-refresh-token")
+		const { accessToken, refreshToken } = this.getTokens(cookies)
 
-		if (!accessToken || !refreshToken) {
-			this.auth.set({
-				userData: null,
-			})
-			return false
-		} else if (this.auth.get().userData) {
-			return this.auth.get().userData
+		if (accessToken && refreshToken) {
+			const client = createClient(cookies)
+			const { data, error } = await client.auth.getUser(accessToken.value)
+
+			if (error) {
+				cookies.delete("sb-access-token", {
+					path: "/",
+				})
+				cookies.delete("sb-refresh-token", {
+					path: "/",
+				})
+				cookies.delete("sb-user", {
+					path: "/",
+				})
+				return null
+			}
+
+			return data
 		}
+	}
 
-		const { data, error } = await supabase.auth.setSession({
-			refresh_token: refreshToken.value,
-			access_token: accessToken.value,
-		})
+	static getUserInfo(cookies: AstroCookies) {
+		const user = cookies.get("sb-user")
 
-		if (error) {
-			cookies.delete("sb-access-token", {
-				path: "/",
-			})
-			cookies.delete("sb-refresh-token", {
-				path: "/",
-			})
+		if (!user) {
 			return null
 		}
 
-		this.auth.set({
-			userData: data,
-		})
-		return data
+		return JSON.parse(user.value) as UserInfo
 	}
 
 	static isSignedIn(cookies: AstroCookies) {
+		const { accessToken, refreshToken } = this.getTokens(cookies)
+
+		return Boolean(accessToken && refreshToken)
+	}
+
+	private static getTokens(cookies: AstroCookies) {
 		const accessToken = cookies.get("sb-access-token")
 		const refreshToken = cookies.get("sb-refresh-token")
 
-		return Boolean(accessToken && refreshToken)
+		return {
+			accessToken,
+			refreshToken,
+		}
 	}
 }

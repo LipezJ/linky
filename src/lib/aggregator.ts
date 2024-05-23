@@ -9,8 +9,8 @@ import type { Addons, Link } from "@/lib/types/aggregator.types"
 import type { AstroCookies } from "astro"
 
 export class Aggregator {
-	static async init() {
-		const { error, status } = await initAggregator()
+	static async init(cookies: AstroCookies) {
+		const { error, status } = await initAggregator(cookies)
 
 		if (error) {
 			throw new Error()
@@ -18,11 +18,11 @@ export class Aggregator {
 		return status
 	}
 
-	static async get(userName: string | undefined) {
+	static async get(userName: string | undefined, cookies: AstroCookies) {
 		let aggregator = null
 
 		if (userName) {
-			const { data, error } = await getAggregator(userName)
+			const { data, error } = await getAggregator(cookies, userName)
 			if (!error) {
 				aggregator = data
 			}
@@ -36,7 +36,7 @@ export class Aggregator {
 			refresh_token: cookies.get("sb-refresh-token")?.value as string,
 		}
 
-		const { error, status } = await updateAggregatorLinks(links, token)
+		const { error, status } = await updateAggregatorLinks(cookies, links, token)
 
 		if (error) {
 			throw new Error()
@@ -50,7 +50,7 @@ export class Aggregator {
 			refresh_token: cookies.get("sb-refresh-token")?.value as string,
 		}
 
-		const { error, status } = await updateAggregatorAddons(addons, token)
+		const { error, status } = await updateAggregatorAddons(cookies, addons, token)
 
 		if (error) {
 			throw new Error()
